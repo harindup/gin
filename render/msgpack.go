@@ -16,6 +16,10 @@ type MsgPack struct {
 
 var msgpackContentType = []string{"application/msgpack; charset=utf-8"}
 
+func (r MsgPack) WriteContentType(w http.ResponseWriter) {
+	writeContentType(w, msgpackContentType)
+}
+
 func (r MsgPack) Render(w http.ResponseWriter) error {
 	return WriteMsgPack(w, r.Data)
 }
